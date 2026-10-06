@@ -356,7 +356,7 @@ export const buildSteps = [
   {
     title: "If you would rather use Xcode",
     detail:
-      "File -> New -> Project -> Choose Template -> Multiplatform tab -> Application section -> Safari Extension App. Name it, set your bundle identifier, and finish. When it opens, replace everything in Shared (Extension)/Resources with your six files, then for both the app target and the extension target set Signing & Capabilities -> Signing Certificate to Sign to Run Locally with Team set to None. Tick Allow unsigned extensions in Safari's Developer tab, run it once, then enable it as in the steps above.",
+      "File -> New -> Project -> Choose Template -> Multiplatform tab -> Application section -> Safari Extension App. Name it HTTPSNAP and set Organization Identifier to com.httpsnap - just the reverse of the domain you own, with no product name and no .extension suffix. When it opens, replace everything in Shared (Extension)/Resources with your six files, then in Signing & Capabilities for both the app target and the extension target pick your Team (a free Apple ID Personal Team is enough), or set Signing Certificate to Sign to Run Locally with Team set to None to skip signing altogether. Tick Allow unsigned extensions in Safari's Developer tab, run it once, then enable it as in the steps above.",
     code: "com.httpsnap",
   },
   {
