@@ -243,37 +243,37 @@ export const iconAssets = [
     name: "Icon.png",
     size: 1024,
     place: "Shared (App)/Resources",
-    url: "https://base44.app/api/apps/6ac5656e1ef75275ef3723b1/files/mp/public/6ac5656e1ef75275ef3723b1/60df430e4_icon.png",
+    url: "https://base44.app/api/apps/6ac5656e1ef75275ef3723b1/files/mp/public/6ac5656e1ef75275ef3723b1/453de490c_icon.png",
   },
   {
     name: "icon-256.png",
     size: 256,
     place: "images",
-    url: "https://base44.app/api/apps/6ac5656e1ef75275ef3723b1/files/mp/public/6ac5656e1ef75275ef3723b1/649443cfd_icon-256.png",
+    url: "https://base44.app/api/apps/6ac5656e1ef75275ef3723b1/files/mp/public/6ac5656e1ef75275ef3723b1/dff531715_icon-256.png",
   },
   {
     name: "icon-128.png",
     size: 128,
     place: "images",
-    url: "https://base44.app/api/apps/6ac5656e1ef75275ef3723b1/files/mp/public/6ac5656e1ef75275ef3723b1/ba1466dc3_icon-128.png",
+    url: "https://base44.app/api/apps/6ac5656e1ef75275ef3723b1/files/mp/public/6ac5656e1ef75275ef3723b1/4c6e52b9e_icon-128.png",
   },
   {
     name: "icon-96.png",
     size: 96,
     place: "images",
-    url: "https://base44.app/api/apps/6ac5656e1ef75275ef3723b1/files/mp/public/6ac5656e1ef75275ef3723b1/e1ce01dec_icon-96.png",
+    url: "https://base44.app/api/apps/6ac5656e1ef75275ef3723b1/files/mp/public/6ac5656e1ef75275ef3723b1/4cd6e3b8b_icon-96.png",
   },
   {
     name: "icon-64.png",
     size: 64,
     place: "images",
-    url: "https://base44.app/api/apps/6ac5656e1ef75275ef3723b1/files/mp/public/6ac5656e1ef75275ef3723b1/86bd11c71_icon-64.png",
+    url: "https://base44.app/api/apps/6ac5656e1ef75275ef3723b1/files/mp/public/6ac5656e1ef75275ef3723b1/0db58c883_icon-64.png",
   },
   {
     name: "icon-48.png",
     size: 48,
     place: "images",
-    url: "https://base44.app/api/apps/6ac5656e1ef75275ef3723b1/files/mp/public/6ac5656e1ef75275ef3723b1/4f2bf8347_icon-48.png",
+    url: "https://base44.app/api/apps/6ac5656e1ef75275ef3723b1/files/mp/public/6ac5656e1ef75275ef3723b1/ae2711b7f_icon-48.png",
   },
 ];
 

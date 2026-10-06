@@ -12,8 +12,8 @@ export default function IconSet() {
       </CardHeader>
       <CardContent>
         <p className="text-sm text-muted-foreground">
-          A black padlock under an upward chevron: secure, and on the way up. Designed to stay legible at
-          48 pixels, which is the smallest size Safari asks for.
+          A white padlock under an upward chevron on a blue-to-teal gradient: secure, and on the way up.
+          Designed to stay legible at 48 pixels, which is the smallest size Safari asks for.
         </p>
 
         <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
@@ -49,7 +49,8 @@ export default function IconSet() {
         <p className="mt-4 text-sm text-muted-foreground">
           Icon.png is the container app's icon and goes in Shared (App)/Resources. The five numbered files
           go in an images folder inside the extension's Resources folder, under exactly these names. The
-          toolbar mark, toolbar-icon.svg, is in the file list above.
+          toolbar mark, toolbar-icon.svg, is in the file list above - it is deliberately black on
+          transparent, because Safari only renders toolbar icons as a monochrome template image.
         </p>
       </CardContent>
     </Card>
