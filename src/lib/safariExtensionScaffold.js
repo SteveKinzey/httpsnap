@@ -324,45 +324,50 @@ export const scaffoldFiles = [
 
 export const buildSteps = [
   {
-    title: "Join the Apple Developer Program",
+    title: "Put the files in one folder",
     detail:
-      "99 US dollars a year. Required both to sign a Safari extension for your own devices and to submit it to the App Store.",
+      "Make a new folder anywhere on your Mac and copy six files into it: manifest.json, rules.json, rules-strict.json, popup.html, popup.js and PrivacyInfo.xcprivacy. manifest.json has to sit at the top level of that folder - Safari looks for it there and nowhere else. ContentView.swift is only needed for the Xcode route, so leave it out for now.",
   },
   {
-    title: "Find the Safari Extension App template",
+    title: "Deal with the icons before you test",
     detail:
-      "The New Project dropdown on the welcome window is only a shortlist of common templates, and Safari Extension App is not on it. Click Choose Template, select the Multiplatform tab (or iOS or macOS on its own), then look in the Application section for Safari Extension App. Xcode generates the container app and the extension target for you.",
+      "The manifest points at images/icon-48.png plus five more sizes and two toolbar icons. Either make an images folder inside your extension folder and drop those PNGs in, or delete the icons block and the default_icon line from manifest.json. A manifest pointing at a file that is not there can stop the extension loading, so pick one before you go any further.",
+  },
+  {
+    title: "Turn on Safari's developer features",
+    detail:
+      "Safari -> Settings -> Advanced -> tick Show features for web developers. That adds the Developer tab and unlocks the Add Temporary Extension button.",
+  },
+  {
+    title: "Load the extension",
+    detail:
+      "Safari -> Settings -> Developer -> Add Temporary Extension -> select your extension folder -> Open. Safari loads it straight away, with no signing and no Apple Developer account, and it stays loaded until you quit Safari.",
+  },
+  {
+    title: "Switch it on and give it site access",
+    detail:
+      "Safari -> Settings -> Extensions -> tick HTTPS Only. Set its site access to Allow on every website, or Ask if you would rather approve each site yourself. Without site access the rewrite rules have nothing to match and nothing will change.",
+  },
+  {
+    title: "Check that it actually works",
+    detail:
+      "Open an http:// address and confirm you land on https://. Then click the toolbar popup and switch between Upgrade and Force to see how each behaves on a host that only speaks HTTP.",
+  },
+  {
+    title: "If you would rather use Xcode",
+    detail:
+      "File -> New -> Project -> Choose Template -> Multiplatform tab -> Application section -> Safari Extension App. Name it, set your bundle identifier, and finish. When it opens, replace everything in Shared (Extension)/Resources with your six files, then for both the app target and the extension target set Signing & Capabilities -> Signing Certificate to Sign to Run Locally with Team set to None. Tick Allow unsigned extensions in Safari's Developer tab, run it once, then enable it as in the steps above.",
     code: "com.yourname.httpsonly",
   },
   {
-    title: "Replace the extension's resources",
+    title: "Only then join the Apple Developer Program",
     detail:
-      "In Shared (Extension)/Resources, delete the template's manifest.json, rules, background.js and popup files, then drop in the seven files from this page.",
-  },
-  {
-    title: "Add the icons",
-    detail:
-      "Supply PNGs at the paths listed in the manifest's icons block, plus the two toolbar icons. To ship without artwork first, delete both the \"icons\" block and \"action.default_icon\" rather than leaving the paths dangling - a manifest that points at a missing file can stop the extension loading.",
-  },
-  {
-    title: "Run it and switch it on",
-    detail:
-      "Run the app on a simulator or a device once, then enable the extension: on iOS, Settings -> Safari -> Extensions; on macOS, Safari -> Settings -> Extensions. On a Mac you can also allow unsigned extensions from Safari's Develop menu while testing.",
-  },
-  {
-    title: "Or try it without Xcode at all",
-    detail:
-      'You do not need Xcode to test it. In Safari open Settings -> Advanced, tick "Show features for web developers", then open the Developer tab, click Add Temporary Extension and select this Resources folder. The extension stays loaded until you quit Safari.',
-  },
-  {
-    title: "Test the rewrite",
-    detail:
-      "Visit any http:// address and confirm it lands on https://. Switch the popup between Upgrade and Force to see the difference on a host that only speaks HTTP.",
+      "99 US dollars a year. You do not need it to build or test - everything above works without it. It is only required to sign a build for other people, upload to App Store Connect and submit to the App Store.",
   },
   {
     title: "Ship it",
     detail:
-      'Two routes now. With Xcode: Product -> Archive -> Distribute App -> App Store Connect. Without a Mac: zip the Resources folder and upload it to the Safari Web Extension Packager in App Store Connect, which converts and packages it for you. Either way you need a support URL, a marketing URL, your App Privacy answers and a review note explaining what the extension does.',
+      "In App Store Connect click Add -> New App, choose macOS and iOS, and give it a bundle identifier and a SKU. Then under Safari Web Extension Packager click Upload and upload a zip of your extension folder - Apple converts and packages it for you, with no Mac and no Xcode involved. Share a TestFlight link for beta testing when you are ready, then add the build for review and submit. You will need a support URL, a marketing URL, your App Privacy answers and a review note describing what the extension does.",
   },
 ];
 
