@@ -5,6 +5,7 @@ import FileTree from "@/components/scaffold/FileTree";
 import CodeBlock from "@/components/scaffold/CodeBlock";
 import ProjectTree from "@/components/scaffold/ProjectTree";
 import BuildChecklist from "@/components/scaffold/BuildChecklist";
+import IconSet from "@/components/scaffold/IconSet";
 import ScaffoldNotes from "@/components/scaffold/ScaffoldNotes";
 
 export default function ExtensionScaffold() {
@@ -48,7 +49,11 @@ export default function ExtensionScaffold() {
           </div>
         </section>
 
-        <section className="mt-14 grid items-start gap-6 lg:grid-cols-2">
+        <section className="mt-14">
+          <IconSet />
+        </section>
+
+        <section className="mt-6 grid items-start gap-6 lg:grid-cols-2">
           <BuildChecklist />
           <div className="min-w-0 space-y-6">
             <ProjectTree structure={projectStructure} />
