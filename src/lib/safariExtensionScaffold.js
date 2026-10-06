@@ -177,7 +177,7 @@ import SafariServices
 
 struct ContentView: View {
     // Must match the extension target's bundle identifier.
-    private let extensionIdentifier = "com.yourname.httpsnap.Extension"
+    private let extensionIdentifier = "com.httpsnap.HTTPSNAP.Extension"
 
     @State private var status = "Checking…"
 
@@ -357,7 +357,7 @@ export const buildSteps = [
     title: "If you would rather use Xcode",
     detail:
       "File -> New -> Project -> Choose Template -> Multiplatform tab -> Application section -> Safari Extension App. Name it, set your bundle identifier, and finish. When it opens, replace everything in Shared (Extension)/Resources with your six files, then for both the app target and the extension target set Signing & Capabilities -> Signing Certificate to Sign to Run Locally with Team set to None. Tick Allow unsigned extensions in Safari's Developer tab, run it once, then enable it as in the steps above.",
-    code: "com.yourname.httpsnap",
+    code: "com.httpsnap",
   },
   {
     title: "Only then join the Apple Developer Program",
