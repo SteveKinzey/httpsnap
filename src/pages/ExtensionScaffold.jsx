@@ -21,7 +21,7 @@ export default function ExtensionScaffold() {
             <Badge variant="secondary">No content scripts</Badge>
           </div>
           <h1 className="mt-4 font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
-            HTTPS Only, Safari extension starter
+            HTTPSNAP, Safari extension starter
           </h1>
           <p className="mt-3 max-w-2xl text-muted-foreground">
             Every file you need to drop into an Xcode Safari Extension App project. The rewriting is
