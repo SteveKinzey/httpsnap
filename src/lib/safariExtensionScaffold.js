@@ -329,9 +329,9 @@ export const buildSteps = [
       "99 US dollars a year. Required both to sign a Safari extension for your own devices and to submit it to the App Store.",
   },
   {
-    title: "Create the Xcode project",
+    title: "Find the Safari Extension App template",
     detail:
-      "File -> New -> Project -> Safari Extension App, and choose iOS, macOS or Multiplatform. Xcode generates the native container app and the extension target for you.",
+      "The New Project dropdown on the welcome window is only a shortlist of common templates, and Safari Extension App is not on it. Click Choose Template, select the Multiplatform tab (or iOS or macOS on its own), then look in the Application section for Safari Extension App. Xcode generates the container app and the extension target for you.",
     code: "com.yourname.httpsonly",
   },
   {
@@ -350,14 +350,19 @@ export const buildSteps = [
       "Run the app on a simulator or a device once, then enable the extension: on iOS, Settings -> Safari -> Extensions; on macOS, Safari -> Settings -> Extensions. On a Mac you can also allow unsigned extensions from Safari's Develop menu while testing.",
   },
   {
+    title: "Or try it without Xcode at all",
+    detail:
+      'You do not need Xcode to test it. In Safari open Settings -> Advanced, tick "Show features for web developers", then open the Developer tab, click Add Temporary Extension and select this Resources folder. The extension stays loaded until you quit Safari.',
+  },
+  {
     title: "Test the rewrite",
     detail:
       "Visit any http:// address and confirm it lands on https://. Switch the popup between Upgrade and Force to see the difference on a host that only speaks HTTP.",
   },
   {
-    title: "Archive and submit",
+    title: "Ship it",
     detail:
-      "Product -> Archive -> Distribute App -> App Store Connect. You will need a support URL and a marketing URL, your App Privacy answers, and a review note explaining what the extension does. Review is the long pole here, so budget for it.",
+      'Two routes now. With Xcode: Product -> Archive -> Distribute App -> App Store Connect. Without a Mac: zip the Resources folder and upload it to the Safari Web Extension Packager in App Store Connect, which converts and packages it for you. Either way you need a support URL, a marketing URL, your App Privacy answers and a review note explaining what the extension does.',
   },
 ];
 
