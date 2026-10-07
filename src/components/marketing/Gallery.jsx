@@ -2,8 +2,8 @@ import React from "react";
 import SectionHeading from "@/components/marketing/SectionHeading";
 import PanelFrame from "@/components/marketing/gallery/PanelFrame";
 import SafariSettingsShot from "@/components/marketing/gallery/SafariSettingsShot";
+import SafariPopupShot from "@/components/marketing/gallery/SafariPopupShot";
 import AddressBarPanel from "@/components/marketing/gallery/AddressBarPanel";
-import PopupPanel from "@/components/marketing/gallery/PopupPanel";
 import PhonePanel from "@/components/marketing/gallery/PhonePanel";
 
 const panels = [
@@ -12,17 +12,19 @@ const panels = [
     caption:
       "The real settings pane: HTTPSNAP ticked and set to Allow on every website. Safari's permission line is its own wording for the host access a declarative rule needs, so no page content is ever read.",
     Panel: SafariSettingsShot,
-    className: "sm:col-span-3",
+    className: "sm:col-span-2",
+  },
+  {
+    title: "Upgrade or Force",
+    caption:
+      "The real toolbar popup. Upgrade asks Safari to load the HTTPS version of each request; Force rewrites every http:// URL outright, including hosts that never offered HTTPS.",
+    Panel: SafariPopupShot,
+    className: "sm:col-span-2",
   },
   {
     title: "Typed addresses land secure",
     caption: "Type an address with no scheme at all and the request still leaves over https://, because the rule matches the request rather than the page.",
     Panel: AddressBarPanel,
-  },
-  {
-    title: "Upgrade or Force",
-    caption: "The toolbar popup swaps rule sets while you browse: upgrade each request, or rewrite every http:// URL outright.",
-    Panel: PopupPanel,
   },
   {
     title: "The same rules on iPhone and iPad",
@@ -38,10 +40,10 @@ export default function Gallery() {
         <SectionHeading
           eyebrow="Gallery"
           title="What it looks like at each step"
-          description="Four moments from the same flow: switching it on in Safari, the address that lands secure, choosing how strict to be, and the same protection on iOS."
+          description="Real captures from Safari, plus the two views that explain what the extension does with a request once it is switched on."
         />
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-3">
+        <div className="mt-10 grid gap-6 sm:grid-cols-2">
           {panels.map(({ title, caption, Panel, className }) => (
             <PanelFrame key={title} title={title} caption={caption} className={className}>
               <Panel />
