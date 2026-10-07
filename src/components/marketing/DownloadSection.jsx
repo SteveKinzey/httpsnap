@@ -4,6 +4,7 @@ import { ArrowRight, Download, ShieldCheck, Timer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/marketing/SectionHeading";
 import { brand } from "@/lib/brand";
+import { base44 } from "@/api/base44Client";
 
 const steps = [
   {
@@ -25,6 +26,15 @@ const steps = [
 export default function DownloadSection() {
   const live = Boolean(brand.downloadUrl);
 
+  // Counts every click on the section's button. Until the signed build lands the
+  // button sends people to the setup guide, and the "state" property keeps those
+  // early clicks apart from real downloads in the Analytics dashboard.
+  const trackDownloadClick = () =>
+    base44.analytics.track({
+      eventName: "download_click",
+      properties: { state: live ? "live" : "pending" },
+    });
+
   return (
     <section id="download" className="border-b border-border bg-muted/30">
       <div className="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
@@ -41,7 +51,7 @@ export default function DownloadSection() {
                 {live ? (
                   <>
                     <Button asChild size="lg" className="gap-2">
-                      <a href={brand.downloadUrl} download>
+                      <a href={brand.downloadUrl} download onClick={trackDownloadClick}>
                         <Download className="h-4 w-4" />
                         Download for Mac
                       </a>
@@ -60,7 +70,7 @@ export default function DownloadSection() {
                       setup guide covers the route that works today.
                     </p>
                     <Button asChild size="lg" className="mt-4 gap-2">
-                      <Link to="/setup">
+                      <Link to="/setup" onClick={trackDownloadClick}>
                         Open the setup guide
                         <ArrowRight className="h-4 w-4" />
                       </Link>
