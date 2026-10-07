@@ -16,23 +16,27 @@ export const listingUrls = [
   },
 ];
 
-const description = `HTTPSNAP loads every site over HTTPS whenever HTTPS is available.
+const description = `HTTPSNAP makes Safari load the secure version of every site that has one.
 
-Modern Safari upgrades many navigations on its own, but the insecure path still exists: old bookmarks and links that still point at http:// addresses, addresses you type yourself, and the scripts, images and fonts that a secure page still pulls over http://. HTTPSNAP closes that gap.
+That padlock in the address bar only tells you about the page in front of you. The rest of the trip is still fair game: the old bookmark that still says http://, the link someone pasted into an email years ago, the address you typed from memory, and the images, fonts and scripts a secure page quietly pulls in over an unsecured connection. On open Wi-Fi, anyone on the same network can read all of it.
+
+HTTPSNAP closes that gap. It asks Safari to load the HTTPS version of every one of those requests, on every site you visit, so a plain http:// address stops being something you land on by accident.
 
 WHAT IT DOES
-- Asks Safari to load the HTTPS version of each request, using declarative rules that Safari applies in its own networking layer.
-- Covers every request type: main pages, sub-frames, scripts, stylesheets, images, fonts, media, requests and WebSockets.
-- Sits in the Safari toolbar, so you can move between Upgrade mode (the everyday choice) and Force mode (which rewrites every http:// address outright) in one click.
+- Upgrades every request type, not just the page itself: main pages, sub-frames, scripts, stylesheets, images, fonts, media, fetch requests and WebSockets.
+- Catches the addresses Safari does not fix by itself: old bookmarks, typed addresses, pasted links and embedded content from other sites.
+- Switches every http:// address in one click with Force mode, from a button that sits in the Safari toolbar.
+- Starts working the moment you switch it on. No account, no settings file, no dashboard, nothing to configure.
 
 WHAT IT NEVER DOES
-- It does not read page content. The rules are declarative, so there is no content script and no background script in the build.
-- It does not collect anything. No account, no analytics, no servers of ours in the request path, and a privacy manifest that declares no data collection.
-- It cannot dismiss Safari's certificate or "not secure" warnings. Those are a browser-level boundary, and only the person using the browser can accept an unsecure page.
+- It never reads your pages. The rules are declarative, so Safari applies them inside its own networking layer: there is no content script and no background script in the app.
+- It collects nothing. No account, no analytics, no advertising, no third-party SDKs, no servers of ours in the request path, and a privacy manifest that declares no data collection at all.
+- It cannot dismiss a certificate warning, and it does not try. That boundary belongs to Safari, and an extension that could click through a security warning is the last app you should trust. HTTPSNAP upgrades everything that can be upgraded and leaves that decision to you.
 
-There is no account to create and nothing to configure beyond switching the extension on in Safari's settings.
+ONE HONEST NOTE
+Some sites still have no secure version at all. In Upgrade mode they load exactly as they always did. In Force mode they fail loudly, which is better than quietly sending your traffic in the clear.
 
-HTTPSNAP is free.`;
+HTTPSNAP is free: no account, no subscription, no ads, no tracking. Install it once, switch it on in Safari, and forget it exists. Every site you visit loads over HTTPS wherever HTTPS is available, and you never have to think about it again.`;
 
 export const listingCopy = [
   { label: "App name", hint: "30 characters maximum", value: "HTTPSNAP" },
