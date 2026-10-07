@@ -1,12 +1,13 @@
 import { Toaster } from "@/components/ui/toaster"
 import { QueryClientProvider } from '@tanstack/react-query'
 import { queryClientInstance } from '@/lib/query-client'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom';
 import PageNotFound from './lib/PageNotFound';
 import { AuthProvider, useAuth } from '@/lib/AuthContext';
 import UserNotRegisteredError from '@/components/UserNotRegisteredError';
 import ScrollToTop from './components/ScrollToTop';
 import RouteAnalytics from './components/RouteAnalytics';
+import ProtectedRoute from '@/components/ProtectedRoute';
 // Add page imports here
 import MarketingLayout from '@/components/marketing/MarketingLayout';
 import Home from '@/pages/Home';
@@ -16,6 +17,11 @@ import Support from '@/pages/Support';
 import Privacy from '@/pages/Privacy';
 import ThankYou from '@/pages/ThankYou';
 import Install from '@/pages/Install';
+import Login from '@/pages/Login';
+import Register from '@/pages/Register';
+import ForgotPassword from '@/pages/ForgotPassword';
+import ResetPassword from '@/pages/ResetPassword';
+import Submission from '@/pages/Submission';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -51,6 +57,19 @@ const AuthenticatedApp = () => {
         <Route path="/support" element={<Support />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/thank-you" element={<ThankYou />} />
+      </Route>
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+      <Route
+        element={
+          <ProtectedRoute
+            unauthenticatedElement={<Navigate to="/login?returnTo=/submission" replace />}
+          />
+        }
+      >
+        <Route path="/submission" element={<Submission />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>
