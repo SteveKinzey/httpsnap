@@ -17,6 +17,7 @@ import Support from '@/pages/Support';
 import Privacy from '@/pages/Privacy';
 import ThankYou from '@/pages/ThankYou';
 import Install from '@/pages/Install';
+import Connect from '@/pages/Connect';
 import Login from '@/pages/Login';
 import Register from '@/pages/Register';
 import ForgotPassword from '@/pages/ForgotPassword';
@@ -56,6 +57,7 @@ const AuthenticatedApp = () => {
         <Route path="/features" element={<Features />} />
         <Route path="/setup" element={<ExtensionScaffold />} />
         <Route path="/install" element={<Install />} />
+        <Route path="/connect" element={<Connect />} />
         <Route path="/support" element={<Support />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/thank-you" element={<ThankYou />} />

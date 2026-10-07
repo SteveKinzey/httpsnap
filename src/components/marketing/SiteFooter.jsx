@@ -11,6 +11,7 @@ const columns = [
     links: [
       { label: "Features", to: "/features" },
       { label: "Install guide", to: "/install" },
+      { label: "Connect an AI assistant", to: "/connect" },
       { label: "Developer setup", to: "/setup" },
     ],
   },
