@@ -2,6 +2,7 @@
  * Starter files for an "HTTPSNAP" Safari Web Extension.
  * Drop the files below into a Safari Extension App project created in Xcode.
  */
+import startupRepair from "@/components/scaffold/startupRepair";
 
 const manifestJson = String.raw`{
   "manifest_version": 3,
@@ -425,6 +426,15 @@ export const scaffoldFiles = [
     content: mainHtml,
   },
   {
+    id: "startup-fix",
+    name: "StartupFix.swift",
+    path: "Replace viewDidLoad() inside Shared (App)/ViewController.swift",
+    language: "swift",
+    summary: "Startup repair: replace only the existing viewDidLoad() method, not the entire file.",
+    note: "In Xcode, stop the app and open Shared (App)/ViewController.swift. Select the complete override func viewDidLoad() method, from its opening line through the closing brace immediately before func webView(... didFinish ...). Replace that selection with the code above. Do not paste it below the old method, replace the whole file, or add StartupFix.swift to a target. Keep your existing imports, outlet, extension identifier and other methods. Then run again. This checks both common Main.html locations without force-unwrapping either URL; if the file is absent, it renders a self-contained setup screen instead of crashing or showing a blank window. It also creates a web view if its storyboard connection is missing. This page cannot compile or run your local Xcode project.",
+    content: startupRepair,
+  },
+  {
     id: "content-view",
     name: "ContentView.swift",
     path: "Shared (App)/ContentView.swift",
@@ -463,7 +473,7 @@ export const buildSteps = [
   {
     title: "If the app crashes on launch: unexpectedly found nil",
     detail:
-      "That is the container app's landing screen, not the extension. It opens Main.html, and the template's ViewController.swift force-unwraps that file, so if Main.html is not inside the app the crash happens the instant you press Run. Two things have to be true: the file sits in Shared (App)/Resources, and the app target actually copies it. Select Main.html in the sidebar, open the File inspector on the right, and tick the app target under Target Membership; then in Build Phases -> Copy Bundle Resources for that same target, confirm Main.html is in the list and add it with + if it is not. If your copy went missing during the cleanup, the Main.html in the file list on this page is the same file - save it into Shared (App)/Resources and set the membership the same way. Worth knowing: this screen is only the explainer that tells the user where to switch the extension on, and it does nothing for the rewriting itself, so a problem here never stops the extension from working in Safari.",
+      "The highlighted loadFileURL line in the template force-unwraps a Main.html lookup and the bundle's resources URL. A missing file or an unexpected bundle path can therefore stop the container app during startup. If adding Main.html to Copy Bundle Resources did not solve it, stop repeating the membership changes: use StartupFix.swift from this page to replace only the existing viewDidLoad() method in Shared (App)/ViewController.swift. It safely checks Main.html at the bundle root and inside Resources, and displays an embedded setup screen when the file is absent. It also handles a missing webView storyboard connection. Keep the rest of ViewController.swift unchanged, then stop and run the app again. This repair changes only the container screen; it does not change the extension's HTTPS rules or verify that the extension is installed, enabled, or allowed website access. Your local Xcode build and launch must still be checked on your Mac.",
   },
   {
     title: "If one file reports errors in several targets",
