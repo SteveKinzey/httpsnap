@@ -18,6 +18,7 @@ const columns = [
     links: [
       { label: "Support", to: "/support" },
       { label: "Privacy", to: "/privacy" },
+      { label: "App Store pack", to: "/appstore" },
     ],
   },
 ];
