@@ -42,6 +42,11 @@ export const submissionGroups = [
       { label: "Subtitle", limit: 30, value: "Force every site to use HTTPS" },
       { label: "Category", hint: "Primary category, with Secondary set to Productivity", value: "Utilities" },
       { label: "Copyright", hint: "Appears at the bottom of the App Store page", value: "2026 SK America" },
+      {
+        label: "Content Rights",
+        hint: "Click Edit next to it, then answer the third-party content question",
+        value: "No. The app does not contain, show or access third-party content.",
+      },
     ],
   },
   {
