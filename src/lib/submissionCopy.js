@@ -122,7 +122,11 @@ export const submissionGroups = [
         hint: "Read the exact value off the archive inspector in Xcode; it starts with com.httpsnap",
         value: "com.httpsnap.HTTPSNAP",
       },
-      { label: "SKU", hint: "Internal only, never shown to anyone", value: "HTTPSNAP-MAC-1" },
+      {
+        label: "SKU",
+        hint: "Apple filled this in for you; it is internal, never shown to anyone, and cannot be changed once the app record is saved",
+        value: "com.httpsnap.HTTPSNAP",
+      },
       { label: "Version", value: "1.0" },
       { label: "Build", value: "1" },
     ],
