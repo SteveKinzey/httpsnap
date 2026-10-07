@@ -124,8 +124,8 @@ export const submissionGroups = [
       },
       {
         label: "SKU",
-        hint: "Apple filled this in for you; it is internal, never shown to anyone, and cannot be changed once the app record is saved",
-        value: "com.httpsnap.HTTPSNAP",
+        hint: "Internal only, never shown to anyone, and cannot be changed once the app record is saved",
+        value: "HTTPSNAP-MAC-1",
       },
       { label: "Version", value: "1.0" },
       { label: "Build", value: "1" },
