@@ -199,17 +199,19 @@ struct ContentView: View {
         }
         .padding(32)
         .frame(minWidth: 320, minHeight: 320)
-        .task { await refresh() }
+        .onAppear(perform: refresh)
     }
 
-    private func refresh() async {
-        do {
-            let enabled = try await SFSafariExtensionManager
-                .getStateOfSafariExtension(withIdentifier: extensionIdentifier)
-                .isEnabled
-            status = enabled ? "Extension is on." : "Extension is off."
-        } catch {
-            status = "Could not read extension state."
+    // The completion-handler form: it resolves on both iOS and macOS, and needs no async.
+    private func refresh() {
+        SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: extensionIdentifier) { state, _ in
+            DispatchQueue.main.async {
+                guard let state = state else {
+                    status = "Could not read extension state."
+                    return
+                }
+                status = state.isEnabled ? "Extension is on." : "Extension is off."
+            }
         }
     }
 }
@@ -425,10 +427,10 @@ export const scaffoldFiles = [
   {
     id: "content-view",
     name: "ContentView.swift",
-    path: "HTTPSNAP/ContentView.swift",
+    path: "Shared (App)/ContentView.swift",
     language: "swift",
-    summary: "Optional: a SwiftUI landing screen for the container app.",
-    note: "Skip this one unless you want it: your project's container screen is the template's ViewController.swift plus a storyboard, and that already works. Add this only if you would rather build that screen in SwiftUI instead. Its extensionIdentifier is already set to com.httpsnap.HTTPSNAP.Extension.",
+    summary: "Optional: a SwiftUI landing screen, written to build on iOS and macOS alike.",
+    note: "Only add this if you would rather build the container app's screen in SwiftUI: your project's own screen is the template's ViewController.swift plus a storyboard, and that already works, so deleting this file from the project is a perfectly good answer if it reports build errors. If you keep it, it belongs to the two app targets only and never to the extension targets, otherwise the one file reports its errors four times over. It uses the completion-handler form of the Safari extension check and has no async, so it compiles unchanged on both platforms. Its extensionIdentifier is already set to com.httpsnap.HTTPSNAP.Extension.",
     content: contentViewSwift,
   },
   {
@@ -457,6 +459,11 @@ export const buildSteps = [
     title: "If the app's own screen shows an empty icon box",
     detail:
       "The screen inside the container app is Main.html, and it draws Icon.png from the folder next to it. A placeholder there means the image is missing from the app bundle rather than wrong inside the file: in Xcode select Icon.png, open the File inspector, and tick Shared (App) under Target Membership, since a file can sit in the folder without being copied into the app. The name is case-sensitive. If you would rather sidestep it entirely, put the Main.html from the file list in place of the template's - it is self-contained and points at the same image. The icon on the simulator's Home screen is a different thing again: drag Icon.png onto the AppIcon slot in Shared (App)/Resources/Assets.xcassets to fill that one.",
+  },
+  {
+    title: "If the project will not build",
+    detail:
+      "The same file listed under several target names, for instance ContentView.swift showing errors under both the app and the extension on iOS and macOS, means that single file has been ticked into all four targets. Select it, open the File inspector, and tick it for the app targets only - the extension targets never need it. A file can also belong to two targets without belonging to either platform: Unable to resolve module dependency: 'UIKit' means a file importing UIKit is being compiled for macOS, where UIKit does not exist. The macOS app has its own AppDelegate importing Cocoa, so check Target Membership on the iOS AppDelegate and leave it to the iOS app alone. ContentView.swift in the file list is already written to satisfy both platforms. And if you never wanted that extra screen, delete the file and the errors go with it.",
   },
   {
     title: "Turn on Safari's developer features",
