@@ -8,7 +8,8 @@ import { brand } from "@/lib/brand";
 
 export const navItems = [
   { label: "Features", to: "/features" },
-  { label: "Setup guide", to: "/setup" },
+  { label: "Install", to: "/install" },
+  { label: "Developer setup", to: "/setup" },
   { label: "Support", to: "/support" },
   { label: "Privacy", to: "/privacy" },
 ];
@@ -39,7 +40,7 @@ export default function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <Button asChild size="sm" className="hidden sm:inline-flex">
-            <Link to="/setup">Install free</Link>
+            <Link to="/install">Install free</Link>
           </Button>
 
           <Sheet open={open} onOpenChange={setOpen}>
@@ -67,7 +68,7 @@ export default function SiteHeader() {
                 ))}
               </nav>
               <Button asChild className="mt-6 w-full">
-                <Link to="/setup" onClick={() => setOpen(false)}>
+                <Link to="/install" onClick={() => setOpen(false)}>
                   Install free
                 </Link>
               </Button>

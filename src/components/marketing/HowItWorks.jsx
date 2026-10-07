@@ -5,8 +5,8 @@ import SectionHeading from "@/components/marketing/SectionHeading";
 
 const steps = [
   {
-    title: "Add the extension to Safari",
-    body: "Save the seven files to one folder, turn on Safari's developer features, and add the folder as a temporary extension. No signing, no Apple Developer account, no cost.",
+    title: "Download it and open it once",
+    body: "Drag HTTPSNAP into Applications and open it. Opening the app once is what registers the extension with Safari — no developer tools, no Apple Developer account, no cost.",
   },
   {
     title: "Switch it on and allow site access",
@@ -41,10 +41,10 @@ export default function HowItWorks() {
         </ol>
 
         <Link
-          to="/setup"
+          to="/install"
           className="mt-8 inline-flex items-center gap-1.5 text-sm font-medium text-foreground underline underline-offset-4"
         >
-          Open the setup guide
+          Open the install guide
           <ArrowUpRight className="h-4 w-4" />
         </Link>
       </div>

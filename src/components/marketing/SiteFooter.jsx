@@ -10,7 +10,8 @@ const columns = [
     title: "Product",
     links: [
       { label: "Features", to: "/features" },
-      { label: "Setup guide", to: "/setup" },
+      { label: "Install guide", to: "/install" },
+      { label: "Developer setup", to: "/setup" },
     ],
   },
   {

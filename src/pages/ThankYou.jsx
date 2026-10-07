@@ -53,8 +53,8 @@ export default function ThankYou() {
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Button asChild size="lg" className="gap-2">
-              <Link to="/setup">
-                Open the setup guide
+              <Link to="/install">
+                Open the install guide
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
@@ -72,7 +72,7 @@ export default function ThankYou() {
             <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-secure" />
             {brand.downloadUrl
               ? "Nothing happened? Use Download again above — the file is the same signed, notarized build."
-              : "The signed Mac build is still being notarized, so the setup guide is the route that works today."}
+              : "The signed Mac build is still being notarized, so the install guide points you to the route that works today."}
           </p>
         </div>
       </section>
