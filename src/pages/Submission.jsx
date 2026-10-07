@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Lock } from "lucide-react";
+import { ArrowLeft, Images, Lock } from "lucide-react";
 import { Image } from "@/components/ui/image";
 import CopyGroup from "@/components/submission/CopyGroup";
 import { brand } from "@/lib/brand";
@@ -34,13 +34,22 @@ export default function Submission() {
             sign-in.
           </p>
 
-          <Link
-            to="/"
-            className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-brand underline-offset-4 hover:underline"
-          >
-            <ArrowLeft className="h-3.5 w-3.5" />
-            Back to the site
-          </Link>
+          <div className="mt-5 flex flex-wrap items-center gap-6">
+            <Link
+              to="/"
+              className="inline-flex items-center gap-2 text-sm font-medium text-brand underline-offset-4 hover:underline"
+            >
+              <ArrowLeft className="h-3.5 w-3.5" />
+              Back to the site
+            </Link>
+            <Link
+              to="/screenshots"
+              className="inline-flex items-center gap-2 text-sm font-medium text-brand underline-offset-4 hover:underline"
+            >
+              <Images className="h-3.5 w-3.5" />
+              Mac screenshots
+            </Link>
+          </div>
         </div>
       </header>
 
