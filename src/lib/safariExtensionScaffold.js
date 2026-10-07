@@ -430,7 +430,7 @@ export const scaffoldFiles = [
     path: "Shared (App)/ContentView.swift",
     language: "swift",
     summary: "Optional: a SwiftUI landing screen, written to build on iOS and macOS alike.",
-    note: "Only add this if you would rather build the container app's screen in SwiftUI: your project's own screen is the template's ViewController.swift plus a storyboard, and that already works, so deleting this file from the project is a perfectly good answer if it reports build errors. If you keep it, it belongs to the two app targets only and never to the extension targets, otherwise the one file reports its errors four times over. It uses the completion-handler form of the Safari extension check and has no async, so it compiles unchanged on both platforms. Its extensionIdentifier is already set to com.httpsnap.HTTPSNAP.Extension.",
+    note: "Only add this if you would rather build the container app's screen in SwiftUI: your project's own screen is the template's ViewController.swift plus a storyboard, and that already works, so deleting this file from the project is a perfectly good answer if it reports build errors. If you keep it, it belongs to the two app targets only and never to the extension targets, otherwise the one file reports its errors four times over. It uses the completion-handler form of the Safari extension check and has no async, so it compiles unchanged on both platforms - that call resolves to its completion-handler form only, so a copy still holding try await cannot build, and its whole contents need replacing. Its extensionIdentifier is already set to com.httpsnap.HTTPSNAP.Extension.",
     content: contentViewSwift,
   },
   {
