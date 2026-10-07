@@ -43,6 +43,11 @@ module.exports = {
   			},
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
+  			brand: {
+  				DEFAULT: 'hsl(var(--brand-blue))',
+  				cyan: 'hsl(var(--brand-cyan))',
+  				teal: 'hsl(var(--brand-teal))'
+  			},
   			ring: 'hsl(var(--ring))',
   			secure: {
   				DEFAULT: 'hsl(var(--secure))',
@@ -73,7 +78,8 @@ module.exports = {
   			mono: ['var(--font-mono)']
   		},
   		backgroundImage: {
-  			'brand-gradient': 'linear-gradient(135deg, hsl(var(--brand-blue)) 0%, hsl(var(--brand-cyan)) 52%, hsl(var(--brand-teal)) 100%)'
+  			'brand-gradient': 'linear-gradient(135deg, hsl(var(--brand-blue)) 0%, hsl(var(--brand-cyan)) 52%, hsl(var(--brand-teal)) 100%)',
+  			'brand-gradient-hover': 'linear-gradient(rgba(0, 0, 0, 0.14), rgba(0, 0, 0, 0.14)), linear-gradient(135deg, hsl(var(--brand-blue)) 0%, hsl(var(--brand-cyan)) 52%, hsl(var(--brand-teal)) 100%)'
   		},
   		keyframes: {
   			'accordion-down': {

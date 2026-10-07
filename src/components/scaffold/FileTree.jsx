@@ -24,7 +24,7 @@ export default function FileTree({ files, activeId, onSelect }) {
             className={cn(
               "flex shrink-0 items-center gap-2 whitespace-nowrap rounded-md border px-3 py-2 text-left transition-colors",
               active
-                ? "border-primary bg-primary text-primary-foreground"
+                ? "border-primary bg-brand-gradient text-primary-foreground"
                 : "border-transparent text-muted-foreground hover:bg-muted hover:text-foreground"
             )}
           >
