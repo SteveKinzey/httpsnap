@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/marketing/SectionHeading";
 import { brand } from "@/lib/brand";
 import { base44 } from "@/api/base44Client";
+import { trackGaEvent } from "@/lib/googleAnalytics";
 
 const steps = [
   {
@@ -29,11 +30,11 @@ export default function DownloadSection() {
   // Counts every click on the section's button. Until the signed build lands the
   // button sends people to the setup guide, and the "state" property keeps those
   // early clicks apart from real downloads in the Analytics dashboard.
-  const trackDownloadClick = () =>
-    base44.analytics.track({
-      eventName: "download_click",
-      properties: { state: live ? "live" : "pending" },
-    });
+  const trackDownloadClick = () => {
+    const state = live ? "live" : "pending";
+    base44.analytics.track({ eventName: "download_click", properties: { state } });
+    trackGaEvent("download_click", { state });
+  };
 
   return (
     <section id="download" className="border-b border-border bg-muted/30">
