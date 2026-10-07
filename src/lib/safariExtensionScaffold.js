@@ -30,7 +30,8 @@ const manifestJson = String.raw`{
     "64": "images/icon-64.png",
     "96": "images/icon-96.png",
     "128": "images/icon-128.png",
-    "256": "images/icon-256.png"
+    "256": "images/icon-256.png",
+    "512": "images/icon-512.png"
   }
 }
 `;
@@ -246,6 +247,12 @@ export const iconAssets = [
     url: "https://base44.app/api/apps/6ac5656e1ef75275ef3723b1/files/mp/public/6ac5656e1ef75275ef3723b1/453de490c_icon.png",
   },
   {
+    name: "icon-512.png",
+    size: 512,
+    place: "images",
+    url: "https://base44.app/api/apps/6ac5656e1ef75275ef3723b1/files/mp/public/6ac5656e1ef75275ef3723b1/143752b62_icon-512.png",
+  },
+  {
     name: "icon-256.png",
     size: 256,
     place: "images",
@@ -298,6 +305,7 @@ Shared (Extension)/
       icon-96.png                   (this page, ready to save)
       icon-128.png                  (this page, ready to save)
       icon-256.png                  (this page, ready to save)
+      icon-512.png                  (this page, ready to save)
       toolbar-icon.svg              (this page)
   SafariWebExtensionHandler.swift   (template boilerplate, unused here)
 iOS (App)/, macOS (App)/, iOS (Extension)/, macOS (Extension)/   (target plumbing - leave as is)`;
@@ -381,12 +389,12 @@ export const buildSteps = [
   {
     title: "Put the files in one folder",
     detail:
-      "Make a new folder anywhere on your Mac and copy seven files into it: manifest.json, rules.json, rules-strict.json, popup.html, popup.js, PrivacyInfo.xcprivacy and an images folder holding toolbar-icon.svg plus the five icon PNGs from the icon set below. manifest.json has to sit at the top level of that folder - Safari looks for it there and nowhere else. ContentView.swift is only needed for the Xcode route, so leave it out for now.",
+      "Make a new folder anywhere on your Mac and copy seven files into it: manifest.json, rules.json, rules-strict.json, popup.html, popup.js, PrivacyInfo.xcprivacy and an images folder holding toolbar-icon.svg plus the six icon PNGs from the icon set below. manifest.json has to sit at the top level of that folder - Safari looks for it there and nowhere else. ContentView.swift is only needed for the Xcode route, so leave it out for now.",
   },
   {
     title: "Deal with the icons before you test",
     detail:
-      "Every icon the manifest asks for is on this page already cut to the right pixel size: the five extension sizes (48, 64, 96, 128 and 256) and the toolbar mark. Save them into an images folder inside the extension's Resources folder, keeping the filenames exactly as they are. If you would rather skip that for now, delete the icons block and the default_icon line from manifest.json instead - a manifest pointing at a file that is not there can stop the extension loading.",
+      "Every icon the manifest asks for is on this page already cut to the right pixel size: the six extension sizes (48, 64, 96, 128, 256 and 512) and the toolbar mark. Save them into an images folder inside the extension's Resources folder, keeping the filenames exactly as they are. If you would rather skip that for now, delete the icons block and the default_icon line from manifest.json instead - a manifest pointing at a file that is not there can stop the extension loading.",
   },
   {
     title: "Turn on Safari's developer features",
