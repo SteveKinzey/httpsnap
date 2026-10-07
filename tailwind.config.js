@@ -72,6 +72,9 @@ module.exports = {
   			display: ['var(--font-display)'],
   			mono: ['var(--font-mono)']
   		},
+  		backgroundImage: {
+  			'brand-gradient': 'linear-gradient(135deg, hsl(var(--brand-blue)) 0%, hsl(var(--brand-cyan)) 52%, hsl(var(--brand-teal)) 100%)'
+  		},
   		keyframes: {
   			'accordion-down': {
   				from: {

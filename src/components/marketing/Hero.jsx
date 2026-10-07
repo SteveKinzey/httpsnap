@@ -8,10 +8,10 @@ const facts = ["No page content read", "No account needed", "Nothing collected"]
 
 export default function Hero() {
   return (
-    <section className="bg-primary text-primary-foreground">
+    <section className="bg-brand-gradient text-primary-foreground">
       <div className="mx-auto grid max-w-6xl gap-14 px-5 py-16 sm:px-8 sm:py-24 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/20 px-3 py-1 text-xs font-medium text-primary-foreground/75">
+          <span className="inline-flex items-center gap-2 rounded-full border border-primary-foreground/30 px-3 py-1 text-xs font-medium text-primary-foreground/90">
             <ShieldCheck className="h-3.5 w-3.5" />
             Safari web extension · Free
           </span>
@@ -20,7 +20,7 @@ export default function Hero() {
             Every site, over HTTPS.
           </h1>
 
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-primary-foreground/70 sm:text-lg">
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-primary-foreground/90 sm:text-lg">
             HTTPSNAP asks Safari to load the secure version of every request it can: the old
             bookmarks, the addresses you type yourself, and the scripts, images and fonts that are
             still being pulled over http://.
@@ -45,7 +45,7 @@ export default function Hero() {
 
           <ul className="mt-10 flex flex-wrap gap-x-6 gap-y-2">
             {facts.map((fact) => (
-              <li key={fact} className="text-sm text-primary-foreground/60">
+              <li key={fact} className="text-sm text-primary-foreground/80">
                 {fact}
               </li>
             ))}

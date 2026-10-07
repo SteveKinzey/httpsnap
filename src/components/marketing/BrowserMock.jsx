@@ -20,13 +20,13 @@ export default function BrowserMock() {
           <ArrowDown className="h-3.5 w-3.5 text-muted-foreground" />
         </div>
 
-        <div className="flex items-center gap-2 rounded-md border border-secure/30 bg-secure/5 px-2.5 py-2 font-mono text-xs text-secure">
+        <div className="flex items-center gap-2 rounded-md border border-primary-foreground/30 bg-primary-foreground/10 px-2.5 py-2 font-mono text-xs text-primary-foreground">
           <Lock className="h-3.5 w-3.5 shrink-0" />
           <span className="truncate">https://example.com/archive/2011</span>
         </div>
       </div>
 
-      <p className="px-1 pt-3 text-xs leading-relaxed text-primary-foreground/60">
+      <p className="px-1 pt-3 text-xs leading-relaxed text-primary-foreground/80">
         Applied by Safari's own networking layer. The page is never handed to the extension.
       </p>
     </div>
