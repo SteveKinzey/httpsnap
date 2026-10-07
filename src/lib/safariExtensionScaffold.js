@@ -239,6 +239,54 @@ const toolbarIconSvg = String.raw`<svg xmlns="http://www.w3.org/2000/svg" width=
 </svg>
 `;
 
+const mainHtml = String.raw`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HTTPSNAP</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px;
+      text-align: center;
+      font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+    }
+    img {
+      display: block;
+      width: 128px;
+      height: 128px;
+      margin: 0 auto 22px;
+      border-radius: 28px;
+    }
+    h1 {
+      margin: 0 0 6px;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+    p {
+      margin: 0 auto;
+      max-width: 320px;
+      opacity: 0.62;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <img src="Icon.png" alt="HTTPSNAP Icon" width="128" height="128" />
+    <h1>HTTPSNAP</h1>
+    <p>You can turn on HTTPSNAP's Safari extension in Settings.</p>
+  </div>
+</body>
+</html>
+`;
+
 export const iconAssets = [
   {
     name: "Icon.png",
@@ -366,6 +414,15 @@ export const scaffoldFiles = [
     content: toolbarIconSvg,
   },
   {
+    id: "main-html",
+    name: "Main.html",
+    path: "Shared (App)/Resources/Main.html",
+    language: "html",
+    summary: "Optional: the container app's screen, drawing the icon from the same folder.",
+    note: "This is the screen the simulator shows when you run the app, and it draws Icon.png from the folder it sits in. If it shows an empty box where the icon should be, the image is not in the app bundle - in Xcode select Icon.png, open the File inspector, and tick Shared (App) under Target Membership, because a file can sit in the folder without being copied into the app. The name is case-sensitive, so it has to be exactly Icon.png next to this file. Using this file in place of the template's Main.html is optional: the template's own one is fine once the icon is in the bundle. It styles itself, so nothing else has to change.",
+    content: mainHtml,
+  },
+  {
     id: "content-view",
     name: "ContentView.swift",
     path: "HTTPSNAP/ContentView.swift",
@@ -395,6 +452,11 @@ export const buildSteps = [
     title: "Deal with the icons before you test",
     detail:
       "Every icon the manifest asks for is on this page already cut to the right pixel size: the six extension sizes (48, 64, 96, 128, 256 and 512) and the toolbar mark. Save them into an images folder inside the extension's Resources folder, keeping the filenames exactly as they are. If you would rather skip that for now, delete the icons block and the default_icon line from manifest.json instead - a manifest pointing at a file that is not there can stop the extension loading.",
+  },
+  {
+    title: "If the app's own screen shows an empty icon box",
+    detail:
+      "The screen inside the container app is Main.html, and it draws Icon.png from the folder next to it. A placeholder there means the image is missing from the app bundle rather than wrong inside the file: in Xcode select Icon.png, open the File inspector, and tick Shared (App) under Target Membership, since a file can sit in the folder without being copied into the app. The name is case-sensitive. If you would rather sidestep it entirely, put the Main.html from the file list in place of the template's - it is self-contained and points at the same image. The icon on the simulator's Home screen is a different thing again: drag Icon.png onto the AppIcon slot in Shared (App)/Resources/Assets.xcassets to fill that one.",
   },
   {
     title: "Turn on Safari's developer features",
