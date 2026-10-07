@@ -3,6 +3,7 @@
  * Drop the files below into a Safari Extension App project created in Xcode.
  */
 import startupRepair from "@/components/scaffold/startupRepair";
+import viewControllerRepair from "@/components/scaffold/viewControllerRepair";
 
 const manifestJson = String.raw`{
   "manifest_version": 3,
@@ -424,6 +425,15 @@ export const scaffoldFiles = [
     summary: "Optional: the container app's screen, drawing the icon from the same folder.",
     note: "This is the screen the simulator shows when you run the app, and it draws Icon.png from the folder it sits in. If it shows an empty box where the icon should be, the image is not in the app bundle - in Xcode select Icon.png, open the File inspector, and tick Shared (App) under Target Membership, because a file can sit in the folder without being copied into the app. The name is case-sensitive, so it has to be exactly Icon.png next to this file. Using this file in place of the template's Main.html is optional: the template's own one is fine once the icon is in the bundle. It styles itself, so nothing else has to change.",
     content: mainHtml,
+  },
+  {
+    id: "view-controller-fix",
+    name: "ViewController.swift",
+    path: "Shared (App)/ViewController.swift — replace the contents of the existing file",
+    language: "swift",
+    summary: "Complete replacement based on your supplied file, with the startup repair included.",
+    note: "This is the complete file, not a method snippet. In Xcode, open your existing Shared (App)/ViewController.swift, select all its contents and replace them with the code above. Do not add a second ViewController.swift or change target membership. Stop the app and run it again. Your supplied version still had the original force-unwrapped Main.html lookup; this version checks both common file locations and displays an embedded setup screen if Main.html is absent. It also handles a missing webView connection. Your extension identifier, platform imports, extension-state callback and Safari preferences handler are preserved. The replacement is provided here for you to apply; your local Xcode build and launch have not been verified.",
+    content: viewControllerRepair,
   },
   {
     id: "startup-fix",
