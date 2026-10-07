@@ -533,6 +533,11 @@ export const buildSteps = [
       "File -> New -> Project -> Choose Template -> Multiplatform tab -> Application section -> Safari Extension App. Name it HTTPSNAP and set Organization Identifier to com.httpsnap - just the reverse of the domain you own, with no product name and no .extension suffix. When it opens, replace the template files in Shared (Extension)/Resources with your seven - meaning its manifest.json, background.js, content.js, popup.html, popup.css, popup.js, _locales folder and images folder all go, SafariWebExtensionHandler.swift stays - and put the container app icon in Shared (App)/Resources as Icon.png, then in Signing & Capabilities for both the app target and the extension target pick your Team (a free Apple ID Personal Team is enough), or set Signing Certificate to Sign to Run Locally with Team set to None to skip signing altogether. Tick Allow unsigned extensions in Safari's Developer tab, run it once, then enable it as in the steps above.",
     code: "com.httpsnap",
   },
+  {
+    title: "Before you upload to the App Store",
+    detail:
+      "An App Store upload checks two things the Safari-only route never needed, and each error names the missing piece rather than the fix. First, the Mac app icon: the AppIcon set in Assets.xcassets is filled per platform, and an empty Mac section leaves no .icns in the bundle, which is what produces the complaint about a 512pt @ 2x image. That is not a second picture - 512pt at 2x is exactly the 1024x1024 icon you already have. Select the AppIcon set, open its Attributes inspector, tick Mac, and drop Icon.png into the Mac section's 512pt @ 2x slot; the smaller Mac slots are optional and can be filled from the smaller PNGs on this page. Keep the icon ticked into the app target only, never the extension. Second, the app category: add an Application Category row on the macOS app target's Info tab, with LSApplicationCategoryType set to public.app-category.utilities. Both are parts of the build itself, so make a fresh archive afterwards - an archive built before either change keeps reporting the same two errors.",
+  },
 ];
 
 export const limitations = [
