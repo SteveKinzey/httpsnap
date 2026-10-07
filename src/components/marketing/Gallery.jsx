@@ -17,7 +17,7 @@ const panels = [
   {
     title: "Upgrade or Force",
     caption:
-      "The real toolbar popup. Upgrade asks Safari to load the HTTPS version of each request; Force rewrites every http:// URL outright, including hosts that never offered HTTPS.",
+      "The real toolbar popup, open over this site. Upgrade asks Safari to load the HTTPS version of each request; Force rewrites every http:// URL outright, including hosts that never offered HTTPS.",
     Panel: SafariPopupShot,
     className: "sm:col-span-2",
   },

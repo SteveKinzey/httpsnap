@@ -8,5 +8,5 @@ export const brand = {
   settingsShot:
     "https://media.base44.com/images/public/6ac5656e1ef75275ef3723b1/c6f541332_CleanShot2026-10-06at81601PM.png",
   popupShot:
-    "https://media.base44.com/images/public/6ac5656e1ef75275ef3723b1/14312e9a9_CleanShot2026-10-06at81711PM.png",
+    "https://media.base44.com/images/public/6ac5656e1ef75275ef3723b1/532285370_CleanShot2026-10-06at82028PM.png",
 };
