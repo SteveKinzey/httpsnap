@@ -32,6 +32,17 @@
     />
     <meta name="twitter:image" content="https://base44.app/api/apps/6ac5656e1ef75275ef3723b1/files/mp/public/6ac5656e1ef75275ef3723b1/e3215b039_httpsnap-social-card-1200x630.jpg" />
     <meta name="twitter:image:alt" content="HTTPSNAP — every site, over HTTPS." />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q5JT80PYWT"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() { dataLayer.push(arguments); }
+      gtag('js', new Date());
+      // HTTPSNAP is a single-page app, so the browser only loads this page once:
+      // the site sends each route's page view itself.
+      gtag('config', 'G-Q5JT80PYWT', { send_page_view: false });
+    </script>
   </head>
   <body>
     <div id="root"></div>
