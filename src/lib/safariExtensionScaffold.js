@@ -298,6 +298,18 @@ export const iconAssets = [
     url: "https://base44.app/api/apps/6ac5656e1ef75275ef3723b1/files/mp/public/6ac5656e1ef75275ef3723b1/453de490c_icon.png",
   },
   {
+    name: "Icon-2048.png",
+    size: 2048,
+    place: "AppIcon, universal 2x",
+    url: "https://media.base44.com/images/public/6ac5656e1ef75275ef3723b1/453de490c_icon.png/v1/fit/w_2048,h_2048,q_100,enc_png,quality_auto/453de490c_icon.png",
+  },
+  {
+    name: "Icon-3072.png",
+    size: 3072,
+    place: "AppIcon, universal 3x",
+    url: "https://media.base44.com/images/public/6ac5656e1ef75275ef3723b1/453de490c_icon.png/v1/fit/w_3072,h_3072,q_100,enc_png,quality_auto/453de490c_icon.png",
+  },
+  {
     name: "icon-512.png",
     size: 512,
     place: "images",

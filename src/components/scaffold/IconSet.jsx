@@ -47,7 +47,8 @@ export default function IconSet() {
         </div>
 
         <p className="mt-4 text-sm text-muted-foreground">
-          Icon.png is the container app's icon and goes in Shared (App)/Resources. The six numbered files
+          Icon-2048 and Icon-3072 are the same artwork at the universal 2x and 3x sizes Xcode's AppIcon
+          set asks for. Icon.png is the container app's icon and goes in Shared (App)/Resources. The six numbered files
           go in an images folder inside the extension's Resources folder, under exactly these names. The
           toolbar mark, toolbar-icon.svg, is in the file list above - it is deliberately black on
           transparent, because Safari only renders toolbar icons as a monochrome template image.
