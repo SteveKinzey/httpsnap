@@ -1,7 +1,7 @@
 import React from "react";
 import SectionHeading from "@/components/marketing/SectionHeading";
 import PanelFrame from "@/components/marketing/gallery/PanelFrame";
-import SafariSettingsPanel from "@/components/marketing/gallery/SafariSettingsPanel";
+import SafariSettingsShot from "@/components/marketing/gallery/SafariSettingsShot";
 import AddressBarPanel from "@/components/marketing/gallery/AddressBarPanel";
 import PopupPanel from "@/components/marketing/gallery/PopupPanel";
 import PhonePanel from "@/components/marketing/gallery/PhonePanel";
@@ -9,8 +9,10 @@ import PhonePanel from "@/components/marketing/gallery/PhonePanel";
 const panels = [
   {
     title: "Switched on in Safari",
-    caption: "Tick HTTPSNAP in Safari's extensions list and set website access to Allow on every website. There is nothing else to configure.",
-    Panel: SafariSettingsPanel,
+    caption:
+      "The real settings pane: HTTPSNAP ticked and set to Allow on every website. Safari's permission line is its own wording for the host access a declarative rule needs, so no page content is ever read.",
+    Panel: SafariSettingsShot,
+    className: "sm:col-span-3",
   },
   {
     title: "Typed addresses land secure",
@@ -36,12 +38,12 @@ export default function Gallery() {
         <SectionHeading
           eyebrow="Gallery"
           title="What it looks like at each step"
-          description="Four moments from the same flow: switching it on, the address that lands secure, choosing how strict to be, and the same protection on iOS."
+          description="Four moments from the same flow: switching it on in Safari, the address that lands secure, choosing how strict to be, and the same protection on iOS."
         />
 
-        <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          {panels.map(({ title, caption, Panel }) => (
-            <PanelFrame key={title} title={title} caption={caption}>
+        <div className="mt-10 grid gap-6 sm:grid-cols-3">
+          {panels.map(({ title, caption, Panel, className }) => (
+            <PanelFrame key={title} title={title} caption={caption} className={className}>
               <Panel />
             </PanelFrame>
           ))}
