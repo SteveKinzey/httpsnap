@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ArrowRight, Download, ShieldCheck, Timer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/marketing/SectionHeading";
@@ -26,6 +26,7 @@ const steps = [
 // holds the hosted .dmg or .zip of the signed, notarized Mac app.
 export default function DownloadSection() {
   const live = Boolean(brand.downloadUrl);
+  const navigate = useNavigate();
 
   // Counts every click on the section's button. Until the signed build lands the
   // button sends people to the setup guide, and the "state" property keeps those
@@ -52,7 +53,16 @@ export default function DownloadSection() {
                 {live ? (
                   <>
                     <Button asChild size="lg" className="gap-2">
-                      <a href={brand.downloadUrl} download onClick={trackDownloadClick}>
+                      <a
+                        href={brand.downloadUrl}
+                        download
+                        onClick={() => {
+                          trackDownloadClick();
+                          // The download starts from the link itself; the
+                          // confirmation page is what records it as an install.
+                          navigate("/thank-you");
+                        }}
+                      >
                         <Download className="h-4 w-4" />
                         Download for Mac
                       </a>

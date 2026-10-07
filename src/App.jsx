@@ -15,6 +15,7 @@ import ExtensionScaffold from '@/pages/ExtensionScaffold';
 import Support from '@/pages/Support';
 import Privacy from '@/pages/Privacy';
 import AppStorePack from '@/pages/AppStorePack';
+import ThankYou from '@/pages/ThankYou';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -49,6 +50,7 @@ const AuthenticatedApp = () => {
         <Route path="/support" element={<Support />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/appstore" element={<AppStorePack />} />
+        <Route path="/thank-you" element={<ThankYou />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>

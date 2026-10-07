@@ -2,7 +2,13 @@ import React from "react";
 import PageHero from "@/components/marketing/PageHero";
 import SectionHeading from "@/components/marketing/SectionHeading";
 import CopyField from "@/components/marketing/CopyField";
-import { listingCopy, listingUrls, privacyAnswers, reviewNotes } from "@/lib/appStoreSubmission";
+import {
+  listingCopy,
+  listingUrls,
+  privacyAnswers,
+  reviewNotes,
+  submissionChecks,
+} from "@/lib/appStoreSubmission";
 
 export default function AppStorePack() {
   return (
@@ -69,6 +75,29 @@ export default function AppStorePack() {
               <div key={item.question} className="rounded-xl border border-border bg-card p-5">
                 <h3 className="font-heading text-sm font-semibold">{item.question}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.answer}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-3xl px-5 py-14 sm:px-8 sm:py-16">
+          <SectionHeading
+            eyebrow="Step 5"
+            title="Final package checks"
+            description="The last walk-through of the package before you click Submit. Everything tagged Required is something Apple refuses the build over, or a step that is much cheaper to catch here than after an upload."
+          />
+          <div className="mt-8 space-y-4">
+            {submissionChecks.map((item) => (
+              <div key={item.title} className="rounded-xl border border-border bg-card p-5">
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="rounded-full border border-border bg-muted px-2.5 py-0.5 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+                    {item.tag}
+                  </span>
+                  <h3 className="font-heading text-sm font-semibold">{item.title}</h3>
+                </div>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{item.body}</p>
               </div>
             ))}
           </div>
