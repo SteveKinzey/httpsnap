@@ -58,7 +58,7 @@ export const submissionGroups = [
         hint: "Editable later without a new review",
         limit: 170,
         value:
-          "No account, no setup, no tracking. HTTPSNAP rewrites the requests Safari still allows over plain HTTP, so bookmarks, typed addresses and mixed page assets load encrypted.",
+          "No account, no setup, no tracking. HTTPSNAP rewrites the requests Safari still allows over HTTP, so bookmarks, typed addresses, and mixed-content assets load encrypted.",
       },
       { label: "Description", limit: 4000, value: description },
       {
