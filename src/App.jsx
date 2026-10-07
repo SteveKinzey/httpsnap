@@ -14,7 +14,6 @@ import Features from '@/pages/Features';
 import ExtensionScaffold from '@/pages/ExtensionScaffold';
 import Support from '@/pages/Support';
 import Privacy from '@/pages/Privacy';
-import AppStorePack from '@/pages/AppStorePack';
 import ThankYou from '@/pages/ThankYou';
 import Install from '@/pages/Install';
 
@@ -51,7 +50,6 @@ const AuthenticatedApp = () => {
         <Route path="/install" element={<Install />} />
         <Route path="/support" element={<Support />} />
         <Route path="/privacy" element={<Privacy />} />
-        <Route path="/appstore" element={<AppStorePack />} />
         <Route path="/thank-you" element={<ThankYou />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />

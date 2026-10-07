@@ -30,7 +30,7 @@ const faqs = [
   },
   {
     q: "Does it work on iPhone and iPad?",
-    a: "The rules themselves are not Mac-specific, but loading an unsigned build is a Mac-only step. Getting the extension onto iPhone or iPad means signing it and distributing it through the App Store, which is covered at the end of the setup guide.",
+    a: "The rules themselves are not Mac-specific, but loading an unsigned build is a Mac-only step. Getting the extension onto iPhone or iPad means signing it and distributing it through the App Store.",
   },
 ];
 

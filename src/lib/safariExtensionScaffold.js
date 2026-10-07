@@ -533,16 +533,6 @@ export const buildSteps = [
       "File -> New -> Project -> Choose Template -> Multiplatform tab -> Application section -> Safari Extension App. Name it HTTPSNAP and set Organization Identifier to com.httpsnap - just the reverse of the domain you own, with no product name and no .extension suffix. When it opens, replace the template files in Shared (Extension)/Resources with your seven - meaning its manifest.json, background.js, content.js, popup.html, popup.css, popup.js, _locales folder and images folder all go, SafariWebExtensionHandler.swift stays - and put the container app icon in Shared (App)/Resources as Icon.png, then in Signing & Capabilities for both the app target and the extension target pick your Team (a free Apple ID Personal Team is enough), or set Signing Certificate to Sign to Run Locally with Team set to None to skip signing altogether. Tick Allow unsigned extensions in Safari's Developer tab, run it once, then enable it as in the steps above.",
     code: "com.httpsnap",
   },
-  {
-    title: "Only then join the Apple Developer Program",
-    detail:
-      "99 US dollars a year. You do not need it to build or test - everything above works without it. It is only required to sign a build for other people, upload to App Store Connect and submit to the App Store.",
-  },
-  {
-    title: "Ship it",
-    detail:
-      "In App Store Connect click Add -> New App, choose macOS and iOS, and give it a bundle identifier and a SKU. Then under Safari Web Extension Packager click Upload and upload a zip of your extension folder - Apple converts and packages it for you, with no Mac and no Xcode involved. Share a TestFlight link for beta testing when you are ready, then add the build for review and submit. You will need a support URL, a marketing URL, your App Privacy answers and a review note describing what the extension does.",
-  },
 ];
 
 export const limitations = [
