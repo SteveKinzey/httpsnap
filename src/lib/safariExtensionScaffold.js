@@ -2,7 +2,6 @@
  * Starter files for an "HTTPSNAP" Safari Web Extension.
  * Drop the files below into a Safari Extension App project created in Xcode.
  */
-import startupRepair from "@/components/scaffold/startupRepair";
 import viewControllerRepair from "@/components/scaffold/viewControllerRepair";
 
 const manifestJson = String.raw`{
@@ -431,18 +430,9 @@ export const scaffoldFiles = [
     name: "ViewController.swift",
     path: "Shared (App)/ViewController.swift — replace the contents of the existing file",
     language: "swift",
-    summary: "Complete replacement based on your supplied file, with the startup repair included.",
-    note: "This is the complete file, not a method snippet. In Xcode, open your existing Shared (App)/ViewController.swift, select all its contents and replace them with the code above. Do not add a second ViewController.swift or change target membership. Stop the app and run it again. Your supplied version still had the original force-unwrapped Main.html lookup; this version checks both common file locations and displays an embedded setup screen if Main.html is absent. It also handles a missing webView connection. Your extension identifier, platform imports, extension-state callback and Safari preferences handler are preserved. The replacement is provided here for you to apply; your local Xcode build and launch have not been verified.",
+    summary: "Complete file, including the imports and class. Replace ALL contents of your existing ViewController.swift in Xcode. Remove StartupFix.swift from the project if you added it.",
+    note: "The errors in your screenshot come from compiling viewDidLoad() by itself, outside its ViewController class, without the imports. Stop the app in Xcode. Open the existing Shared (App)/ViewController.swift, click inside its editor, press Command-A, then paste this entire file using Command-V. Do not replace only the method or add a second ViewController.swift. If you added StartupFix.swift as a separate source file, remove that snippet from the Xcode project so it is not compiled. Then run the app again. This complete file preserves your extension identifier, platform imports and Safari callbacks, while safely handling a missing Main.html or webView connection. Your local Xcode build and launch have not been verified.",
     content: viewControllerRepair,
-  },
-  {
-    id: "startup-fix",
-    name: "StartupFix.swift",
-    path: "Replace viewDidLoad() inside Shared (App)/ViewController.swift",
-    language: "swift",
-    summary: "Startup repair: replace only the existing viewDidLoad() method, not the entire file.",
-    note: "In Xcode, stop the app and open Shared (App)/ViewController.swift. Select the complete override func viewDidLoad() method, from its opening line through the closing brace immediately before func webView(... didFinish ...). Replace that selection with the code above. Do not paste it below the old method, replace the whole file, or add StartupFix.swift to a target. Keep your existing imports, outlet, extension identifier and other methods. Then run again. This checks both common Main.html locations without force-unwrapping either URL; if the file is absent, it renders a self-contained setup screen instead of crashing or showing a blank window. It also creates a web view if its storyboard connection is missing. This page cannot compile or run your local Xcode project.",
-    content: startupRepair,
   },
   {
     id: "content-view",
@@ -483,7 +473,7 @@ export const buildSteps = [
   {
     title: "If the app crashes on launch: unexpectedly found nil",
     detail:
-      "The highlighted loadFileURL line in the template force-unwraps a Main.html lookup and the bundle's resources URL. A missing file or an unexpected bundle path can therefore stop the container app during startup. If adding Main.html to Copy Bundle Resources did not solve it, stop repeating the membership changes: use StartupFix.swift from this page to replace only the existing viewDidLoad() method in Shared (App)/ViewController.swift. It safely checks Main.html at the bundle root and inside Resources, and displays an embedded setup screen when the file is absent. It also handles a missing webView storyboard connection. Keep the rest of ViewController.swift unchanged, then stop and run the app again. This repair changes only the container screen; it does not change the extension's HTTPS rules or verify that the extension is installed, enabled, or allowed website access. Your local Xcode build and launch must still be checked on your Mac.",
+      "The highlighted loadFileURL line in the template force-unwraps a Main.html lookup and the bundle's resources URL. A missing file or an unexpected bundle path can therefore stop the container app during startup. Use the complete ViewController.swift from this page to replace ALL contents of your existing Shared (App)/ViewController.swift, including the imports and class. Do not paste a bare viewDidLoad() method at the top of a file: errors about override, self or Bundle mean that method is being compiled without its surrounding class or imports. If you added StartupFix.swift as a separate source file, remove it from the Xcode project. The complete replacement safely checks Main.html at the bundle root and inside Resources, displays an embedded setup screen when the file is absent, and handles a missing webView storyboard connection. Stop and run the app again. This repair changes only the container screen; it does not change the extension's HTTPS rules or verify that the extension is installed, enabled, or allowed website access. Your local Xcode build and launch must still be checked on your Mac.",
   },
   {
     title: "If one file reports errors in several targets",

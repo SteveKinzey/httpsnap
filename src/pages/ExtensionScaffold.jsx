@@ -9,8 +9,9 @@ import IconSet from "@/components/scaffold/IconSet";
 import ScaffoldNotes from "@/components/scaffold/ScaffoldNotes";
 
 export default function ExtensionScaffold() {
-  const [activeId, setActiveId] = useState(scaffoldFiles[0].id);
-  const activeFile = scaffoldFiles.find((file) => file.id === activeId) || scaffoldFiles[0];
+  const defaultFile = scaffoldFiles.find((file) => file.id === "view-controller-fix") || scaffoldFiles[0];
+  const [activeId, setActiveId] = useState(defaultFile.id);
+  const activeFile = scaffoldFiles.find((file) => file.id === activeId) || defaultFile;
 
   return (
     <div className="min-h-screen bg-background">
@@ -36,7 +37,7 @@ export default function ExtensionScaffold() {
             <p className="mb-3 text-xs font-medium uppercase tracking-wide text-muted-foreground">
               Extension files
             </p>
-            <FileTree files={scaffoldFiles} activeId={activeId} onSelect={setActiveId} />
+            <FileTree files={scaffoldFiles} activeId={activeFile.id} onSelect={setActiveId} />
           </aside>
 
           <div className="min-w-0 space-y-4">
