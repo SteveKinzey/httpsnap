@@ -8,6 +8,7 @@ import InstallSteps from "@/components/marketing/InstallSteps";
 import InstallFaq from "@/components/marketing/InstallFaq";
 import { brand } from "@/lib/brand";
 import { requirements } from "@/lib/installGuide";
+import { logDownloadToSheet } from "@/lib/downloadLog";
 
 export default function Install() {
   return (
@@ -28,7 +29,11 @@ export default function Install() {
 
         {brand.downloadUrl ? (
           <Button asChild size="lg" className="mt-8 gap-2">
-            <a href={brand.downloadUrl} download>
+            <a
+              href={brand.downloadUrl}
+              download
+              onClick={() => logDownloadToSheet("live")}
+            >
               <Download className="h-4 w-4" />
               Download HTTPSNAP for Mac
             </a>

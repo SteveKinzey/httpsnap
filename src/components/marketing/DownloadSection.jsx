@@ -6,6 +6,7 @@ import SectionHeading from "@/components/marketing/SectionHeading";
 import { brand } from "@/lib/brand";
 import { base44 } from "@/api/base44Client";
 import { trackGaEvent } from "@/lib/googleAnalytics";
+import { logDownloadToSheet } from "@/lib/downloadLog";
 
 const steps = [
   {
@@ -35,6 +36,7 @@ export default function DownloadSection() {
     const state = live ? "live" : "pending";
     base44.analytics.track({ eventName: "download_click", properties: { state } });
     trackGaEvent("download_click", { state });
+    logDownloadToSheet(state);
   };
 
   return (
