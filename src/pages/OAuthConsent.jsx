@@ -85,7 +85,7 @@ export default function OAuthConsent() {
     try {
       const headers = { "Content-Type": "application/json" };
       // Cookie-backed sessions carry no token; sending "Bearer null" would
-      // shadow the valid cookie, so add the header only when a token exists.
+      // shadow-sm the valid cookie, so add the header only when a token exists.
       if (appParams.token) headers.Authorization = "Bearer " + appParams.token;
       const res = await fetch(`/api/apps/${appParams.appId}/mcp/authorize-grant`, {
         method: "POST",

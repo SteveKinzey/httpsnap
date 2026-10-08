@@ -29,7 +29,7 @@ function ModeCard({ title, body, selected }) {
 
 export default function ShotModes() {
   return (
-    <ShotStage className="bg-gradient-to-b from-muted/70 to-background">
+    <ShotStage className="bg-linear-to-b from-muted/70 to-background">
       <div className="flex h-full w-full flex-col justify-center px-24">
         <h2 className="font-heading text-[68px] font-semibold tracking-[-0.02em]">
           Two modes, one switch
