@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft, Lock } from "lucide-react";
-import html2canvas from "html2canvas";
+import html2canvas from "html2canvas-pro";
 import { cn } from "@/lib/utils";
 import ShotCard from "@/components/screenshots/ShotCard";
 import { SHOT_HEIGHT, SHOT_WIDTH } from "@/components/screenshots/ShotStage";

@@ -13,7 +13,7 @@ export default function AddressBarPanel() {
         <ArrowDown className="h-3.5 w-3.5 text-muted-foreground" />
       </div>
 
-      <div className="flex items-center gap-2 rounded-lg bg-brand-gradient px-3 py-2 font-mono text-xs text-primary-foreground shadow">
+      <div className="flex items-center gap-2 rounded-lg bg-brand-gradient px-3 py-2 font-mono text-xs text-primary-foreground shadow-sm">
         <Lock className="h-3.5 w-3.5 shrink-0" />
         <span className="min-w-0 truncate">https://example.com/blog</span>
         <span className="ml-auto shrink-0 rounded-full border border-primary-foreground/40 px-1.5 py-0.5 text-[10px] font-semibold">

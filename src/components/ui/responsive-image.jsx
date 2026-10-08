@@ -37,7 +37,7 @@ export const ResponsiveImage = React.forwardRef(
               className="w-full h-full inset-0 absolute"
               style={{
                 objectFit: fittingType === "fit" ? "contain" : "cover",
-                filter: "blur(10px)",
+                filter: "blur-sm(10px)",
                 transform: "scale(1.1)",
               }}
             />

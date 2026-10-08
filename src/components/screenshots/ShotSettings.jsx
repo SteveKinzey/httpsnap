@@ -5,7 +5,7 @@ import { brand } from "@/lib/brand";
 
 export default function ShotSettings() {
   return (
-    <ShotStage className="bg-gradient-to-b from-muted/70 to-background">
+    <ShotStage className="bg-linear-to-b from-muted/70 to-background">
       <div className="flex h-full w-full items-center gap-20 px-24">
         <div className="w-[520px] shrink-0">
           <p className="text-[22px] font-medium uppercase tracking-[0.18em] text-brand">
