@@ -13,6 +13,14 @@
     "title": {
       "type": "string",
       "description": "Spreadsheet title as created in Google Drive."
+    },
+    "window_started_at": {
+      "type": "string",
+      "description": "Start of the current write-limit window for the download log."
+    },
+    "window_count": {
+      "type": "number",
+      "description": "Rows logged in the current write-limit window."
     }
   },
   "required": [
