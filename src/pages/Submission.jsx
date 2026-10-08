@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Images, Lock } from "lucide-react";
+import { ArrowLeft, Gauge, Images, Lock } from "lucide-react";
 import { Image } from "@/components/ui/image";
 import CopyGroup from "@/components/submission/CopyGroup";
 import { brand } from "@/lib/brand";
@@ -48,6 +48,13 @@ export default function Submission() {
             >
               <Images className="h-3.5 w-3.5" />
               Mac screenshots
+            </Link>
+            <Link
+              to="/build-status"
+              className="inline-flex items-center gap-2 text-sm font-medium text-brand underline-offset-4 hover:underline"
+            >
+              <Gauge className="h-3.5 w-3.5" />
+              Build status
             </Link>
           </div>
         </div>

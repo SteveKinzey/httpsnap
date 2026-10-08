@@ -25,6 +25,7 @@ import ResetPassword from '@/pages/ResetPassword';
 import OAuthConsent from '@/pages/OAuthConsent';
 import Submission from '@/pages/Submission';
 import Screenshots from '@/pages/Screenshots';
+import BuildStatus from '@/pages/BuildStatus';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -76,6 +77,7 @@ const AuthenticatedApp = () => {
       >
         <Route path="/submission" element={<Submission />} />
         <Route path="/screenshots" element={<Screenshots />} />
+        <Route path="/build-status" element={<BuildStatus />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />
     </Routes>
