@@ -53,6 +53,7 @@
     "date-fns": "^3.6.0",
     "embla-carousel-react": "^8.5.2",
     "framer-motion": "^11.16.4",
+    "html2canvas-pro": "~1.6.7",
     "input-otp": "^1.4.2",
     "lodash": "^4.17.21",
     "lucide-react": "^0.475.0",
@@ -73,11 +74,11 @@
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.171.0",
     "vaul": "^1.1.2",
-    "zod": "^3.24.2",
-    "html2canvas-pro": "~1.6.7"
+    "zod": "^3.24.2"
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
+    "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^22.13.5",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
@@ -93,8 +94,7 @@
     "postcss": "^8.5.3",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.8.2",
-    "vite": "^8.2.0",
-    "@tailwindcss/postcss": "^4.3.3"
+    "vite": "^8.2.0"
   },
   "overrides": {
     "@humanfs/node": "^0.16.8"
