@@ -27,7 +27,15 @@ export default function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Button asChild size="lg" variant="secondary" className="gap-2">
+            {/* The primary call to action: a solid brand-blue fill with white
+                text, so it reads as the main action against the hero gradient
+                instead of the near-white fill it used to carry. */}
+            <Button
+              asChild
+              size="lg"
+              variant="secondary"
+              className="gap-2 bg-brand text-primary-foreground hover:bg-brand/90"
+            >
               <Link to="/setup">
                 Install in Safari
                 <ArrowRight className="h-4 w-4" />
