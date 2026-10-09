@@ -4,9 +4,7 @@ import { ArrowRight, Download, ShieldCheck, Timer } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import SectionHeading from "@/components/marketing/SectionHeading";
 import { brand } from "@/lib/brand";
-import { base44 } from "@/api/base44Client";
-import { trackGaEvent } from "@/lib/googleAnalytics";
-import { logDownloadToSheet } from "@/lib/downloadLog";
+import { trackDownloadClick } from "@/lib/downloadTracking";
 
 const steps = [
   {
@@ -32,12 +30,7 @@ export default function DownloadSection() {
   // Counts every click on the section's button. Until the signed build lands the
   // button sends people to the setup guide, and the "state" property keeps those
   // early clicks apart from real downloads in the Analytics dashboard.
-  const trackDownloadClick = () => {
-    const state = live ? "live" : "pending";
-    base44.analytics.track({ eventName: "download_click", properties: { state } });
-    trackGaEvent("download_click", { state });
-    logDownloadToSheet(state);
-  };
+  const onDownloadClick = () => trackDownloadClick(live ? "live" : "pending");
 
   return (
     <section id="download" className="border-b border-border bg-muted/30">
@@ -59,7 +52,7 @@ export default function DownloadSection() {
                         href={brand.downloadUrl}
                         download
                         onClick={() => {
-                          trackDownloadClick();
+                          onDownloadClick();
                           // The download starts from the link itself; the
                           // confirmation page is what records it as an install.
                           navigate("/thank-you");
@@ -83,7 +76,7 @@ export default function DownloadSection() {
                       setup guide covers the route that works today.
                     </p>
                     <Button asChild size="lg" className="mt-4 gap-2">
-                      <Link to="/setup" onClick={trackDownloadClick}>
+                      <Link to="/setup" onClick={onDownloadClick}>
                         Open the setup guide
                         <ArrowRight className="h-4 w-4" />
                       </Link>

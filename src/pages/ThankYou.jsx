@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { brand } from "@/lib/brand";
 import { base44 } from "@/api/base44Client";
 import { trackGaEvent } from "@/lib/googleAnalytics";
-import { logDownloadToSheet } from "@/lib/downloadLog";
+import { trackDownloadClick } from "@/lib/downloadTracking";
 
 const nextSteps = [
   {
@@ -61,7 +61,7 @@ export default function ThankYou() {
             </Button>
             {brand.downloadUrl ? (
               <Button asChild variant="outline" size="lg" className="gap-2">
-                <a href={brand.downloadUrl} download onClick={() => logDownloadToSheet("live")}>
+                <a href={brand.downloadUrl} download onClick={() => trackDownloadClick("live")}>
                   <Download className="h-4 w-4" />
                   Download again
                 </a>

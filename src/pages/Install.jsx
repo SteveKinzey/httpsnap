@@ -8,7 +8,7 @@ import InstallSteps from "@/components/marketing/InstallSteps";
 import InstallFaq from "@/components/marketing/InstallFaq";
 import { brand } from "@/lib/brand";
 import { requirements } from "@/lib/installGuide";
-import { logDownloadToSheet } from "@/lib/downloadLog";
+import { trackDownloadClick } from "@/lib/downloadTracking";
 
 export default function Install() {
   return (
@@ -32,7 +32,7 @@ export default function Install() {
             <a
               href={brand.downloadUrl}
               download
-              onClick={() => logDownloadToSheet("live")}
+              onClick={() => trackDownloadClick("live")}
             >
               <Download className="h-4 w-4" />
               Download HTTPSNAP for Mac
