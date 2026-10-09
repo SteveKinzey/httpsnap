@@ -1,0 +1,14 @@
+/* Button labels keep the colour their classes ask for.
+   The base styles reset every <a> to inherit its colour, and that reset was
+   winning over the colour classes on link-based buttons: a label that should be
+   white on the brand gradient came out in the surrounding text colour instead,
+   which reads as dark text on blue. These two label colours are re-asserted on
+   the link itself, outside Tailwind's layers, so they hold wherever the classes
+   are used. */
+a.text-primary-foreground {
+  color: hsl(var(--primary-foreground));
+}
+
+a.text-brand {
+  color: hsl(var(--brand-blue));
+}
