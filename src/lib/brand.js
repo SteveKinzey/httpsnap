@@ -9,7 +9,8 @@ export const brand = {
     "https://media.base44.com/images/public/6ac5656e1ef75275ef3723b1/c6f541332_CleanShot2026-10-06at81601PM.png",
   popupShot:
     "https://media.base44.com/images/public/6ac5656e1ef75275ef3723b1/532285370_CleanShot2026-10-06at82028PM.png",
-  // Hosted .dmg or .zip of the signed, notarized Mac app. Set this to switch
-  // the direct-download button live; leave null until that build exists.
-  downloadUrl: null,
+  // Hosted .dmg of the signed, notarized Mac app. Holding a value here is what
+  // switches the direct-download buttons live across the site; null while there
+  // is no build to point at.
+  downloadUrl: "https://dl.httpsnap.com/HTTPSNAP.dmg",
 };
