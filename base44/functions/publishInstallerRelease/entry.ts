@@ -64,15 +64,30 @@ export default async function (req) {
       return Response.json({ error: 'Forbidden' }, { status: 403 });
     }
 
+    // A second, separate key. Knowing the passphrase on its own gets a caller
+    // nowhere: both values must match, so one leaked secret is not enough to
+    // replace the public download.
+    const expectedKey = secrets.get('PUBLISH_INSTALLER_KEY');
+    if (!expectedKey) {
+      return Response.json({ error: 'Publish key is not configured' }, { status: 500 });
+    }
+    const providedKey = req.headers.get('x-publish-key') || '';
+    if (!safeEqual(providedKey, expectedKey)) {
+      return Response.json({ error: 'Forbidden' }, { status: 403 });
+    }
+
     const sourceUrl = resolveSourceUrl(body?.sourceUrl);
     const tag = safeSegment(body?.tag, DEFAULT_TAG, /^[A-Za-z0-9._-]{1,40}$/);
     // Fixed name: re-running replaces the same published file, so nobody can
     // point the public download at a differently named binary.
     const assetName = DEFAULT_ASSET;
+    // Required on every call: only a file whose fingerprint the caller declared
+    // in advance can ever go live, so an unverified binary cannot be published
+    // even by somebody holding both keys.
     const expectedSha256 =
-      typeof body?.sha256 === 'string' && body.sha256.trim() ? body.sha256.trim().toLowerCase() : '';
-    if (expectedSha256 && !/^[a-f0-9]{64}$/.test(expectedSha256)) {
-      throw new Error('sha256 must be 64 hexadecimal characters');
+      typeof body?.sha256 === 'string' ? body.sha256.trim().toLowerCase() : '';
+    if (!/^[a-f0-9]{64}$/.test(expectedSha256)) {
+      throw new Error('sha256 is required: 64 hexadecimal characters');
     }
 
     const connection = await base44.asServiceRole.connectors.getConnection('github');
@@ -104,7 +119,7 @@ export default async function (req) {
     const sha256 = Array.from(digest)
       .map((b) => b.toString(16).padStart(2, '0'))
       .join('');
-    if (expectedSha256 && sha256 !== expectedSha256) {
+    if (sha256 !== expectedSha256) {
       return Response.json(
         { error: 'The fetched installer does not match the expected checksum', sha256 },
         { status: 409 }
@@ -160,7 +175,7 @@ export default async function (req) {
       downloadUrl: asset.browser_download_url,
       releaseUrl: release.html_url,
       sha256,
-      checksumVerified: Boolean(expectedSha256),
+      checksumVerified: true,
     });
   } catch (error) {
     return Response.json({ error: error.message }, { status: 500 });
