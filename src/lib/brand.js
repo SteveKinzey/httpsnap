@@ -9,8 +9,9 @@ export const brand = {
     "https://media.base44.com/images/public/6ac5656e1ef75275ef3723b1/c6f541332_CleanShot2026-10-06at81601PM.png",
   popupShot:
     "https://media.base44.com/images/public/6ac5656e1ef75275ef3723b1/532285370_CleanShot2026-10-06at82028PM.png",
-  // Hosted .dmg of the signed, notarized Mac app, served from a GitHub release
-  // asset. Holding a value here is what switches the direct-download buttons live
-  // across the site; null while there is no build to point at.
-  downloadUrl: "https://github.com/SteveKinzey/httpsnap/releases/download/v1.0.0/HTTPSNAP.dmg",
+  // Hosted .dmg of the signed, notarized Mac app, served from the app's own
+  // domain so nobody is sent to GitHub to download. Holding a value here is what
+  // switches the direct-download buttons live across the site; null while there
+  // is no build to point at.
+  downloadUrl: "https://dl.httpsnap.com/HTTPSNAP.dmg",
 };
