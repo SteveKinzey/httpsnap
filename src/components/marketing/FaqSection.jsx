@@ -25,12 +25,12 @@ const faqs = [
     a: "No. Certificate and not-secure warnings are a browser-level boundary, and an extension that could click through them would defeat the point of the warning. Only the person using the browser can accept an unsecure page.",
   },
   {
-    q: "Do I need an Apple Developer account to try it?",
-    a: "No. Loading a temporary extension from Safari's Developer tab needs no signing and costs nothing. An account is only needed to sign a build for other people or submit to the App Store.",
+    q: "Do I need an Apple Developer account to install it?",
+    a: "No. Download the disk image from this site, open the app once, and turn the extension on in Safari. The build is signed and notarized before it is published, so there is nothing for you to sign and no account to create.",
   },
   {
     q: "Does it work on iPhone and iPad?",
-    a: "The rules themselves are not Mac-specific, but loading an unsigned build is a Mac-only step. Getting the extension onto iPhone or iPad means signing it and distributing it through the App Store.",
+    a: "No. HTTPSNAP is a Mac app for Safari on macOS and is only distributed that way today.",
   },
 ];
 

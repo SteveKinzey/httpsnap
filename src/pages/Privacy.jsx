@@ -31,9 +31,9 @@ const sections = [
     ],
   },
   {
-    title: "App Store distribution",
+    title: "How it is distributed",
     paragraphs: [
-      "When the extension is installed from the App Store, Apple's own policies also apply to that download and listing. This policy describes what the extension itself does once it is running in your browser.",
+      "HTTPSNAP is downloaded directly from this site as a disk image, then signed and notarized by Apple before it is published. There is no store listing and no account between you and the download: the file you get is the one we published, and Apple has checked it on the way out.",
     ],
   },
   {

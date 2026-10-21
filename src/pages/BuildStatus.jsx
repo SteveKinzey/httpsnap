@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, Gauge, Images, Lock } from "lucide-react";
+import { ArrowLeft, Lock } from "lucide-react";
 import { Image } from "@/components/ui/image";
 import { base44 } from "@/api/base44Client";
 import StatusRow from "@/components/build/StatusRow";
@@ -52,20 +52,6 @@ export default function BuildStatus() {
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               Back to the site
-            </Link>
-            <Link
-              to="/submission"
-              className="inline-flex items-center gap-2 text-sm font-medium text-brand underline-offset-4 hover:underline"
-            >
-              <Gauge className="h-3.5 w-3.5" />
-              Submission copy
-            </Link>
-            <Link
-              to="/screenshots"
-              className="inline-flex items-center gap-2 text-sm font-medium text-brand underline-offset-4 hover:underline"
-            >
-              <Images className="h-3.5 w-3.5" />
-              Mac screenshots
             </Link>
           </div>
         </div>

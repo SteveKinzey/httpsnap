@@ -44,7 +44,7 @@ export const buildStages = [
     id: "privacy",
     title: "Privacy manifest",
     tone: "ready",
-    detail: "PrivacyInfo.xcprivacy declares no data collection and no tracking, which keeps every App Privacy answer empty.",
+    detail: "PrivacyInfo.xcprivacy declares no data collection and no tracking, so the manifest ships with every category empty.",
   },
   {
     id: "xcode-build",

@@ -23,8 +23,6 @@ import Register from '@/pages/Register';
 import ForgotPassword from '@/pages/ForgotPassword';
 import ResetPassword from '@/pages/ResetPassword';
 import OAuthConsent from '@/pages/OAuthConsent';
-import Submission from '@/pages/Submission';
-import Screenshots from '@/pages/Screenshots';
 import BuildStatus from '@/pages/BuildStatus';
 
 const AuthenticatedApp = () => {
@@ -71,12 +69,10 @@ const AuthenticatedApp = () => {
       <Route
         element={
           <ProtectedRoute
-            unauthenticatedElement={<Navigate to="/login?returnTo=/submission" replace />}
+            unauthenticatedElement={<Navigate to="/login?returnTo=/build-status" replace />}
           />
         }
       >
-        <Route path="/submission" element={<Submission />} />
-        <Route path="/screenshots" element={<Screenshots />} />
         <Route path="/build-status" element={<BuildStatus />} />
       </Route>
       <Route path="*" element={<PageNotFound />} />

@@ -460,8 +460,8 @@ export const scaffoldFiles = [
     name: "PrivacyInfo.xcprivacy",
     path: "Shared (Extension)/Resources/PrivacyInfo.xcprivacy",
     language: "xml",
-    summary: "The privacy manifest App Store submissions expect.",
-    note: "Add it to the extension target (and the app target) in Xcode. Every array is empty because this extension collects nothing and tracks nothing - keep it that way and your App Privacy answers stay simple.",
+    summary: "The privacy manifest that travels with the extension.",
+    note: "Add it to the extension target (and the app target) in Xcode. Every array is empty because this extension collects nothing and tracks nothing - keep it that way and the manifest stays accurate.",
     content: privacyManifest,
   },
 ];
@@ -532,16 +532,6 @@ export const buildSteps = [
     detail:
       "File -> New -> Project -> Choose Template -> Multiplatform tab -> Application section -> Safari Extension App. Name it HTTPSNAP and set Organization Identifier to com.httpsnap - just the reverse of the domain you own, with no product name and no .extension suffix. When it opens, replace the template files in Shared (Extension)/Resources with your seven - meaning its manifest.json, background.js, content.js, popup.html, popup.css, popup.js, _locales folder and images folder all go, SafariWebExtensionHandler.swift stays - and put the container app icon in Shared (App)/Resources as Icon.png, then in Signing & Capabilities for both the app target and the extension target pick your Team (a free Apple ID Personal Team is enough), or set Signing Certificate to Sign to Run Locally with Team set to None to skip signing altogether. Tick Allow unsigned extensions in Safari's Developer tab, run it once, then enable it as in the steps above.",
     code: "com.httpsnap",
-  },
-  {
-    title: "Before you upload to the App Store",
-    detail:
-      "An App Store upload checks two things the Safari-only route never needed, and each error names the missing piece rather than the fix. First, the Mac app icon: the AppIcon set in Assets.xcassets is filled per platform, and an empty Mac section leaves no .icns in the bundle, which is what produces the complaint about a 512pt @ 2x image. That is not a second picture - 512pt at 2x is exactly the 1024x1024 icon you already have. Select the AppIcon set, open its Attributes inspector, tick Mac, and drop Icon.png into the Mac section's 512pt @ 2x slot; the smaller Mac slots are optional and can be filled from the smaller PNGs on this page. Keep the icon ticked into the app target only, never the extension. Second, the app category: add an Application Category row on the macOS app target's Info tab, with LSApplicationCategoryType set to public.app-category.utilities. Both are parts of the build itself, so make a fresh archive afterwards - an archive built before either change keeps reporting the same two errors. A third check can follow on the iOS side: if it says the launch screen exceeds the memory limit, the iOS app's splash screen is holding an image that is too large for the memory a launch screen is given. Open LaunchScreen.storyboard, select the image view inside it, and either delete it - a plain background colour is a valid launch screen - or point it at a small image, where the 128 pixel icon on this page is already more than enough. Never place the 1024, 2048 or 3072 pixel icon there: a launch screen is drawn once, at startup, and has to stay tiny.",
-  },
-  {
-    title: "If the upload mentions a quarantine attribute",
-    detail:
-      "Error 91109 means a file inside the app still carries the com.apple.quarantine mark, which macOS adds to anything downloaded from the internet. It is nearly always the icon you saved from this page: the mark travels with the file into Xcode and on into the archive, where the App Store refuses it. Clear the mark from the project folder in Terminal by typing xattr -dr com.apple.quarantine, adding a space, then dragging the folder that holds your HTTPSNAP.xcodeproj from Finder into the Terminal window so its path fills itself in, and pressing Return - the project folder itself, not the exported package or the archive, because the mark sits in the source files and only a fresh archive clears it out of the build. Nothing is printed when it works. To check what is actually still marked, run the same command with -p instead of -dr: it lists each file that still carries the attribute and stays silent when the project is clean. The archive you have already built still holds the marked copy, so delete the project's DerivedData folder (~/Library/Developer/Xcode/DerivedData), press Shift-Command-K to clean the build folder, and make a fresh archive before uploading again. To confirm a folder is clear, run the same command with -p in place of -dr: it prints the mark on any file that still carries one, and prints nothing when none is left. A downloaded file arriving marked is ordinary macOS behaviour rather than damage, so clearing the mark is all that is needed.",
   },
 ];
 
