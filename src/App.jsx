@@ -26,7 +26,6 @@ import OAuthConsent from '@/pages/OAuthConsent';
 import Submission from '@/pages/Submission';
 import Screenshots from '@/pages/Screenshots';
 import BuildStatus from '@/pages/BuildStatus';
-import InstallerDownload from '@/pages/InstallerDownload';
 
 const AuthenticatedApp = () => {
   const { isLoadingAuth, isLoadingPublicSettings, authError, navigateToLogin } = useAuth();
@@ -69,7 +68,6 @@ const AuthenticatedApp = () => {
       <Route path="/forgot-password" element={<ForgotPassword />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/oauth/consent" element={<OAuthConsent />} />
-      <Route path="/HTTPSNAP.dmg" element={<InstallerDownload />} />
       <Route
         element={
           <ProtectedRoute
