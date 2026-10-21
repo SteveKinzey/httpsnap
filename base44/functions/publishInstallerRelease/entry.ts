@@ -1,4 +1,5 @@
 import { createClientFromRequest } from 'npm:@base44/sdk@0.8.54';
+import { secrets } from 'base44:runtime';
 
 const OWNER = 'SteveKinzey';
 const REPO = 'httpsnap';
@@ -11,6 +12,15 @@ const MAX_BYTES = 250 * 1024 * 1024;
 
 const safeSegment = (value, fallback, pattern) =>
   typeof value === 'string' && pattern.test(value) ? value : fallback;
+
+// Compares the passphrase in constant time, so a wrong guess learns nothing
+// from how long the answer took.
+const safeEqual = (a, b) => {
+  if (typeof a !== 'string' || typeof b !== 'string' || a.length !== b.length) return false;
+  let diff = 0;
+  for (let i = 0; i < a.length; i += 1) diff |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return diff === 0;
+};
 
 // Only the app's own distribution host may be fetched: an https URL anywhere
 // else (or a redirect to one) could reach internal services and republish their
@@ -40,6 +50,20 @@ export default async function (req) {
     if (user.role !== 'admin') return Response.json({ error: 'Forbidden' }, { status: 403 });
 
     const body = await req.json().catch(() => ({}));
+
+    // Only the owner, holding the app's private passphrase, may republish the
+    // public download. The admin session above is not enough on its own, and
+    // the check fails closed if the passphrase was never configured.
+    const expectedSecret = secrets.get('PUBLISH_INSTALLER_SECRET');
+    if (!expectedSecret) {
+      return Response.json({ error: 'Publish passphrase is not configured' }, { status: 500 });
+    }
+    const providedSecret =
+      req.headers.get('x-publish-secret') || (typeof body?.secret === 'string' ? body.secret : '');
+    if (!safeEqual(providedSecret, expectedSecret)) {
+      return Response.json({ error: 'Forbidden' }, { status: 403 });
+    }
+
     const sourceUrl = resolveSourceUrl(body?.sourceUrl);
     const tag = safeSegment(body?.tag, DEFAULT_TAG, /^[A-Za-z0-9._-]{1,40}$/);
     // Fixed name: re-running replaces the same published file, so nobody can
